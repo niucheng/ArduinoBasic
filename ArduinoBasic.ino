@@ -1,5 +1,7 @@
 /*
- Chat  Server
+ Another basic interpreter for Arduino via telnet protocol.
+
+ ArduinoBasic.ino : forked from Chat Server example.
 
  A simple server that distributes any incoming messages to all
  connected clients.  To use telnet to  your device's IP address and type.
@@ -14,7 +16,8 @@
  by David A. Mellis
  modified 9 Apr 2012
  by Tom Igoe
-
+ forked 25 May 2014
+ by niucheng
  */
 
 #include <SPI.h>
@@ -23,8 +26,7 @@
 // Enter a MAC address and IP address for your controller below.
 // The IP address will be dependent on your local network.
 // gateway and subnet are optional:
-byte mac[] = {
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
 IPAddress ip(192,168,1, 177);
 IPAddress gateway(192,168,1, 1);
 IPAddress subnet(255, 255, 0, 0);
@@ -32,17 +34,17 @@ IPAddress subnet(255, 255, 0, 0);
 
 // telnet defaults to port 23
 EthernetServer server(23);
-boolean alreadyConnected = false; // whether or not the client was connected previously
+boolean alreadyConnected = false;  // whether or not the client was connected previously
 
 void setup() {
   // initialize the ethernet device
   Ethernet.begin(mac, ip, gateway, subnet);
   // start listening for clients
   server.begin();
- // Open serial communications and wait for port to open:
+  // Open serial communications and wait for port to open:
   Serial.begin(9600);
-   while (!Serial) {
-    ; // wait for serial port to connect. Needed for Leonardo only
+  while (!Serial) {
+    ;  // wait for serial port to connect. Needed for Leonardo only
   }
 
 
