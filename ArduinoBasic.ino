@@ -27,10 +27,9 @@
 // The IP address will be dependent on your local network.
 // gateway and subnet are optional:
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
-IPAddress ip(192,168,1, 177);
-IPAddress gateway(192,168,1, 1);
+IPAddress ip(192, 168, 1, 177);
+IPAddress gateway(192, 168, 1, 1);
 IPAddress subnet(255, 255, 0, 0);
-
 
 // telnet defaults to port 23
 EthernetServer server(23);
@@ -46,7 +45,6 @@ void setup() {
   while (!Serial) {
     ;  // wait for serial port to connect. Needed for Leonardo only
   }
-
 
   Serial.print("Chat server address:");
   Serial.println(Ethernet.localIP());
